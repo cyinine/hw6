@@ -1,13 +1,10 @@
 $(document).ready(function() {
 
-  var animals = [
-    "dog", "cat", "rabbit", "hamster", "skunk", "goldfish",
-    "bird", "ferret", "turtle", "sugar glider", "chinchilla",
-    "hedgehog", "hermit crab", "gerbil", "pygmy goat", "chicken",
-    "capybara", "teacup pig", "serval", "salamander", "frog"
+  var pokemon = [
+    "pikachu","bulbasaur" , "squirtle" ,"charmander",
+    "gengar","ghastly", "haunter"
   ];
 
-  // function to make buttons and add to page
   function populateButtons(arrayToUse, classToAdd, areaToAddTo) {
     $(areaToAddTo).empty();
 
@@ -21,13 +18,13 @@ $(document).ready(function() {
 
   }
 
-  $(document).on("click", ".animal-button", function() {
-    $("#animals").empty();
-    $(".animal-button").removeClass("active");
+  $(document).on("click", ".pokemon-button", function() {
+    $("#pokemon").empty();
+    $(".pokemon-button").removeClass("active");
     $(this).addClass("active");
 
     var type = $(this).attr("data-type");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "MGa3fvV7ZpDrn9mL7NOK9Io7CJWFepkM&limit=10";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=dc6zaTOxFJmzC&limit=10";
 
     $.ajax({
       url: queryURL,
@@ -51,7 +48,7 @@ $(document).ready(function() {
           pokemonImage.attr("data-still", still);
           pokemonImage.attr("data-animate", animated);
           pokemonImage.attr("data-state", "still");
-          pokemonImage.addClass("animal-image");
+          pokemonImage.addClass("pokemon-image");
 
           pokemonDiv.append(p);
           pokemonDiv.append(pokemonImage);
